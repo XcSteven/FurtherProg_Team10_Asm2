@@ -12,7 +12,7 @@
 	<artifactId>Assignment2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Assignment2</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Assignment2 project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
