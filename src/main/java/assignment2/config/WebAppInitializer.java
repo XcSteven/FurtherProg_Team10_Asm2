@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package assignment2.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

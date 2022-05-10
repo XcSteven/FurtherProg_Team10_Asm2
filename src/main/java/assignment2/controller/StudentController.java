@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package assignment2.controller;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.Student;
-import com.example.demo.service.StudentService;
+import assignment2.model.Student;
+import assignment2.service.StudentService;
 
 @RestController
 public class StudentController {
