@@ -27,19 +27,32 @@ public class Customer {
 	}
 
 
-	public Customer(long id, ZonedDateTime dateCreated, String name){
+	public Customer(long id, ZonedDateTime dateCreated, String name) {
 		super();
 		this.id = id;
 		this.dateCreated = dateCreated;
 		this.name = name;
 	}
+
+	//Getters
 	public long getId() {
 		return id;
 	}
+	public ZonedDateTime getDateCreated() {
+		return dateCreated;
+	}
+	public String getName() {
+		return name;
+	}
 
+	// Setters
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	
+	public void setDateCreated(ZonedDateTime dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 }

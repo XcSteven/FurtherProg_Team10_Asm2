@@ -20,24 +20,52 @@ public class Driver {
 	@Column
 	private String license;
 	private String phone;
-	private int rating;
+	private double rating;
 
 	public Driver() {
 	}
 
 	public Driver(long id, ZonedDateTime dateCreated, String license,
-				   String phone, int rating){
+				   String phone, double rating) {
 		super();
 		this.id = id;
 		this.dateCreated = dateCreated;
+		this.license = license;
+		this.phone = phone;
+		this.rating = rating;
 	}
+
+	// Getters
 	public long getId() {
 		return id;
 	}
+	public ZonedDateTime getDateCreated() {
+		return dateCreated;
+	}
+	public String getLicense() {
+		return license;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public double getRating() {
+		return rating;
+	}
 
+	// Setters
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	
+	public void setDateCreated(ZonedDateTime dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+	public void setLicense(String license) {
+		this.license = license;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
 }
