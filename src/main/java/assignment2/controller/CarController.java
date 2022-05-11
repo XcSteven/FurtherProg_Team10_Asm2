@@ -1,0 +1,32 @@
+package assignment2.controller;
+
+import assignment2.model.Car;
+import assignment2.service.StudentService;
+import assignment2.service.CarService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+public class CarController {
+
+	@Autowired
+	private CarService carService;
+	
+	
+	@RequestMapping(path = "/cars", method = RequestMethod.GET)
+	public List<Car> getAllStudents(){
+		return carService.getAllCar();
+	}
+	
+	@RequestMapping(path = "/cars", method = RequestMethod.POST)
+	public long addCar(@RequestBody Car car) {
+		return carService.saveCar(car);
+	}
+	
+	
+}

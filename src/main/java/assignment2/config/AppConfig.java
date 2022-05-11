@@ -1,5 +1,6 @@
 package assignment2.config;
 
+import assignment2.model.Car;
 import org.hibernate.SessionFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -26,6 +27,9 @@ public class AppConfig {
 	public Student student() {
 		return new Student();
 	}
+    public Car car() {
+        return new Car();
+    }
 	
 
     @Bean
@@ -45,7 +49,7 @@ public class AppConfig {
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/demo");
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/assignment2");
         dataSource.setUsername("postgres");
         dataSource.setPassword("123");
 
