@@ -11,6 +11,7 @@ import java.util.List;
 @Transactional
 @Service
 public class BookingService {
+    @Autowired
     private SessionFactory sessionFactory;
 
     public void setSessionFactory(SessionFactory sessionFactory) {
