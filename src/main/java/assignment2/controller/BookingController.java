@@ -21,7 +21,7 @@ public class BookingController {
         return bookingService.getAllBooking();
     }
 
-    @RequestMapping(path = "/cars", method = RequestMethod.POST)
+    @RequestMapping(path = "/bookings", method = RequestMethod.POST)
     public long addBooking(@RequestBody Booking booking) {
         return bookingService.saveBooking(booking);
     }
