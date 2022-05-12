@@ -1,7 +1,6 @@
 package assignment2.service;
 
 import assignment2.model.Customer;
-import assignment2.model.Student;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
