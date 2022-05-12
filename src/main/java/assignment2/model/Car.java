@@ -1,12 +1,14 @@
 package assignment2.model;
 
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
 
 @Entity
 @Table(name= "car")
+@EntityListeners(AuditingEntityListener.class)
 public class Car {
 	@Id
 	@Column(name = "id")
@@ -14,6 +16,7 @@ public class Car {
 	private long id;
 
 	@CreatedDate
+	@Column(name = "created_date")
 	private ZonedDateTime dateCreated;
 
 	@Column

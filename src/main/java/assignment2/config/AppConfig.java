@@ -27,6 +27,8 @@ public class AppConfig {
 	public Student student() {
 		return new Student();
 	}
+
+    @Bean
     public Car car() {
         return new Car();
     }
