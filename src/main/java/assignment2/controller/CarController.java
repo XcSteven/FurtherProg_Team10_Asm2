@@ -19,7 +19,7 @@ public class CarController {
 	
 	
 	@RequestMapping(path = "/cars", method = RequestMethod.GET)
-	public List<Car> getAllStudents(){
+	public List<Car> getAllCars(){
 		return carService.getAllCar();
 	}
 	
