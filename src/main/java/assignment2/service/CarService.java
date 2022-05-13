@@ -30,4 +30,9 @@ public class CarService {
 		return criteria.list();
 	}
 
+	public long updateCar(Car car){
+		sessionFactory.getCurrentSession().update(car);
+		return car.getId();
+	}
+
 }

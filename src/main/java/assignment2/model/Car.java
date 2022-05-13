@@ -5,6 +5,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name= "car")
@@ -17,7 +18,7 @@ public class Car {
 
 	@CreatedDate
 	@Column(name = "created_date")
-	private ZonedDateTime dateCreated;
+	private Date dateCreated;
 
 	@Column
 	private String VIN;
@@ -33,7 +34,7 @@ public class Car {
 	public Car() {
 	}
 
-	public Car(long id, ZonedDateTime dateCreated, String VIN, String make,
+	public Car(long id, Date dateCreated, String VIN, String make,
 			   String model, String color, boolean convertible, double rating,
 			   String licensePlate, double ratePerKm) {
 		super();
@@ -53,7 +54,7 @@ public class Car {
 	public long getId() {
 		return id;
 	}
-	public ZonedDateTime getDateCreated() {
+	public Date getDateCreated() {
 		return dateCreated;
 	}
 	public String getVIN() {
@@ -85,7 +86,7 @@ public class Car {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public void setDateCreated(ZonedDateTime dateCreated) {
+	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 	public void setVIN(String VIN) {

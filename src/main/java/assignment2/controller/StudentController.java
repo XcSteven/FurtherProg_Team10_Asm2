@@ -16,8 +16,7 @@ public class StudentController {
 
 	@Autowired
 	private StudentService studentService;
-	
-	
+
 	@RequestMapping(path = "/students", method = RequestMethod.GET)
 	public List<Student> getAllStudents(){
 		return studentService.getAllStudent();
