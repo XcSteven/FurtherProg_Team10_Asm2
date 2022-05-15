@@ -4,7 +4,6 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
-import java.util.Set;
 
 @Entity
 @Table(name= "customer")
@@ -17,6 +16,7 @@ public class Customer {
 
 
 	@CreatedDate
+	@Column(name = "created_date")
 	private ZonedDateTime dateCreated;
 
 	@Column

@@ -1,7 +1,6 @@
 package assignment2.model;
 
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
@@ -9,7 +8,6 @@ import java.util.Date;
 
 @Entity
 @Table(name= "car")
-@EntityListeners(AuditingEntityListener.class)
 public class Car {
 	@Id
 	@Column(name = "id")
@@ -18,10 +16,10 @@ public class Car {
 
 	@CreatedDate
 	@Column(name = "created_date")
-	private Date dateCreated;
+	private ZonedDateTime dateCreated;
 
 	@Column
-	private String VIN;
+	private String vehicleId;
 	private String make;
 	private String model;
 	private String color;
@@ -30,17 +28,17 @@ public class Car {
 	private String licensePlate;
 	private double ratePerKm;
 
-	
+
 	public Car() {
 	}
 
-	public Car(long id, Date dateCreated, String VIN, String make,
+	public Car(long id, ZonedDateTime dateCreated, String vehicleId, String make,
 			   String model, String color, boolean convertible, double rating,
 			   String licensePlate, double ratePerKm) {
 		super();
 		this.id = id;
 		this.dateCreated = dateCreated;
-		this.VIN = VIN;
+		this.vehicleId = vehicleId;
 		this.make = make;
 		this.model= model;
 		this.color = color;
@@ -54,11 +52,11 @@ public class Car {
 	public long getId() {
 		return id;
 	}
-	public Date getDateCreated() {
+	public ZonedDateTime getDateCreated() {
 		return dateCreated;
 	}
-	public String getVIN() {
-		return VIN;
+	public String getvehicleId() {
+		return vehicleId;
 	}
 	public String getMake() {
 		return make;
@@ -83,14 +81,14 @@ public class Car {
 	}
 
 	// Setters
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
-	public void setDateCreated(Date dateCreated) {
+	public void setDateCreated(ZonedDateTime dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-	public void setVIN(String VIN) {
-		this.VIN = VIN;
+	public void setvehicleId(String vehicleId) {
+		this.vehicleId = vehicleId;
 	}
 	public void setMake(String make) {
 		this.make = make;
@@ -104,13 +102,13 @@ public class Car {
 	public void setConvertible(boolean convertible) {
 		this.convertible = convertible;
 	}
-	public void setRating(int rating) {
+	public void setRating(double rating) {
 		this.rating = rating;
 	}
 	public void setLicensePlate(String licensePlate) {
 		this.licensePlate = licensePlate;
 	}
-	public void setRatePerKm(int ratePerKm) {
+	public void setRatePerKm(double ratePerKm) {
 		this.ratePerKm = ratePerKm;
 	}
 }
