@@ -35,7 +35,7 @@ public class CarService {
         return sessionFactory.getCurrentSession().get(Car.class, id);
     }
 
-    public long updateCar(Car newCar, long id) {
+    public String updateCar(Car newCar, long id) {
         List<Car> carList = getAllCar();
         for (Car car : carList){
             if (car.getId() == id){
@@ -49,10 +49,10 @@ public class CarService {
                 car.setLicensePlate(newCar.getLicensePlate());
                 car.setRatePerKm((newCar.getRatePerKm()));
                 sessionFactory.getCurrentSession().update(car);
-                return car.getId();
+                return "Updated car with id " + id;
             }
         }
-        return id;
+        return "Can't find car with id " + id;
     }
 
     public String deleteACar(long id){

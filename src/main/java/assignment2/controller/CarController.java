@@ -1,6 +1,5 @@
 package assignment2.controller;
 
-import assignment2.CarRepository;
 import assignment2.model.Car;
 import assignment2.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,16 +12,6 @@ public class CarController {
 
     @Autowired
     private CarService carService;
-    private CarRepository repository;
-
-    public CarRepository getRepository() {
-        return repository;
-    }
-
-    public void setRepository(CarRepository repository) {
-        this.repository = repository;
-    }
-
 
     @RequestMapping(path = "/cars", method = RequestMethod.GET)
     public List<Car> getAllCars() {
@@ -40,7 +29,7 @@ public class CarController {
     }
 
     @PutMapping("/cars/{id}")
-    public long updateCar(@RequestBody Car newCar, @PathVariable long id) {
+    public String updateCar(@RequestBody Car newCar, @PathVariable long id) {
         return carService.updateCar(newCar, id);
     }
 
