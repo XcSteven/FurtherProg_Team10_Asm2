@@ -65,7 +65,7 @@ public class Driver {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public void setRating(int rating) {
+	public void setRating(double rating) {
 		this.rating = rating;
 	}
 }

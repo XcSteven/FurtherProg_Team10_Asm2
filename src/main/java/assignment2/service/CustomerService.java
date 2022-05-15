@@ -24,7 +24,7 @@ public class CustomerService {
         return customer.getId();
     }
 
-    public List<Customer> getAllCustomer(){
+    public List<Customer> getAllCustomer() {
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Customer.class);
         return criteria.list();
     }
@@ -35,8 +35,8 @@ public class CustomerService {
 
     public String updateCustomer(Customer newCustomer, long id) {
         List<Customer> customerList = getAllCustomer();
-        for (Customer customer : customerList){
-            if (customer.getId() == id){
+        for (Customer customer : customerList) {
+            if (customer.getId() == id) {
                 sessionFactory.getCurrentSession().evict(customer);
                 customer.setName(newCustomer.getName());
                 sessionFactory.getCurrentSession().update(customer);
@@ -46,9 +46,9 @@ public class CustomerService {
         return "Can't find customer with id " + id;
     }
 
-    public String deleteACustomer(long id){
+    public String deleteACustomer(long id) {
         Customer customer = sessionFactory.getCurrentSession().get(Customer.class, id);
-        if(customer != null){
+        if(customer != null) {
             sessionFactory.getCurrentSession().delete(customer);
             return "Deleted customer with id " + id;
         }

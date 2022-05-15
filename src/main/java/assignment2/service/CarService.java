@@ -37,8 +37,8 @@ public class CarService {
 
     public String updateCar(Car newCar, long id) {
         List<Car> carList = getAllCar();
-        for (Car car : carList){
-            if (car.getId() == id){
+        for (Car car : carList) {
+            if (car.getId() == id) {
                 sessionFactory.getCurrentSession().evict(car);
                 car.setVehicleId(newCar.getVehicleId());
                 car.setMake(newCar.getMake());
@@ -55,9 +55,9 @@ public class CarService {
         return "Can't find car with id " + id;
     }
 
-    public String deleteACar(long id){
+    public String deleteACar(long id) {
         Car car = sessionFactory.getCurrentSession().get(Car.class, id);
-        if(car != null){
+        if(car != null) {
             sessionFactory.getCurrentSession().delete(car);
             return "Deleted car with id " + id;
         }

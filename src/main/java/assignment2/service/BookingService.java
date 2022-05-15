@@ -35,7 +35,7 @@ public class BookingService {
     public String updateBooking(Booking newBooking, long id) {
         List<Booking> bookingList = getAllBooking();
         for (Booking booking : bookingList) {
-            if (booking.getId() == id){
+            if (booking.getId() == id) {
                 sessionFactory.getCurrentSession().evict(booking);
                 booking.setStartLocation(newBooking.getStartLocation());
                 booking.setEndLocation(newBooking.getEndLocation());
@@ -49,9 +49,9 @@ public class BookingService {
         return "Can't find booking with id " + id;
     }
 
-    public String deleteABooking(long id){
+    public String deleteABooking(long id) {
         Booking booking = sessionFactory.getCurrentSession().get(Booking.class, id);
-        if(booking != null){
+        if(booking != null) {
             sessionFactory.getCurrentSession().delete(booking);
             return "Deleted booking with id " + id;
         }
