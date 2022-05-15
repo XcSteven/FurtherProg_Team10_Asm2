@@ -31,7 +31,7 @@ public class CarService {
         return criteria.list();
     }
 
-    public Car getACar(long id){
+    public Car getACar(long id) {
         return sessionFactory.getCurrentSession().get(Car.class, id);
     }
 

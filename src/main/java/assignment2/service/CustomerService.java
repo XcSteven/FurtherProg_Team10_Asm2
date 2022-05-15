@@ -28,4 +28,31 @@ public class CustomerService {
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Customer.class);
         return criteria.list();
     }
+
+    public Customer getACustomer(long id) {
+        return sessionFactory.getCurrentSession().get(Customer.class, id);
+    }
+
+    public String updateCustomer(Customer newCustomer, long id) {
+        List<Customer> customerList = getAllCustomer();
+        for (Customer customer : customerList){
+            if (customer.getId() == id){
+                sessionFactory.getCurrentSession().evict(customer);
+                customer.setName(newCustomer.getName());
+                sessionFactory.getCurrentSession().update(customer);
+                return "Updated customer with id " + id;
+            }
+        }
+        return "Can't find customer with id " + id;
+    }
+
+    public String deleteACustomer(long id){
+        Customer customer = sessionFactory.getCurrentSession().get(Customer.class, id);
+        if(customer != null){
+            sessionFactory.getCurrentSession().delete(customer);
+            return "Deleted customer with id " + id;
+        }
+
+        return "Can't find customer with id " + id;
+    }
 }
