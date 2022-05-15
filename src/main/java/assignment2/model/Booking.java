@@ -83,7 +83,7 @@ public class Booking {
 	public void setDropoff(ZonedDateTime dropoff) {
 		this.dropoff = dropoff;
 	}
-	public void setDistance(int distance) {
+	public void setDistance(double distance) {
 		this.distance = distance;
 	}
 }

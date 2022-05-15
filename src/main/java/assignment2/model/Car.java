@@ -55,7 +55,7 @@ public class Car {
 	public ZonedDateTime getDateCreated() {
 		return dateCreated;
 	}
-	public String getvehicleId() {
+	public String getVehicleId() {
 		return vehicleId;
 	}
 	public String getMake() {
@@ -87,7 +87,7 @@ public class Car {
 	public void setDateCreated(ZonedDateTime dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-	public void setvehicleId(String vehicleId) {
+	public void setVehicleId(String vehicleId) {
 		this.vehicleId = vehicleId;
 	}
 	public void setMake(String make) {

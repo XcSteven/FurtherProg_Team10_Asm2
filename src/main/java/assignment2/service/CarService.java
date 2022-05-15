@@ -40,7 +40,7 @@ public class CarService {
         for (Car car : carList){
             if (car.getId() == id){
                 sessionFactory.getCurrentSession().evict(car);
-                car.setvehicleId(newCar.getvehicleId());
+                car.setVehicleId(newCar.getVehicleId());
                 car.setMake(newCar.getMake());
                 car.setModel(newCar.getModel());
                 car.setColor(newCar.getColor());
