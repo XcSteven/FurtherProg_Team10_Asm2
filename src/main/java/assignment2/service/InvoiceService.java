@@ -23,8 +23,35 @@ public class InvoiceService {
         return invoice.getId();
     }
 
-    public List<Invoice> getAllInvoice(){
+    public List<Invoice> getAllInvoice() {
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Invoice.class);
         return criteria.list();
+    }
+
+    public Invoice getAnInvoice(long id) {
+        return sessionFactory.getCurrentSession().get(Invoice.class, id);
+    }
+
+    public String updateInvoice(Invoice newInvoice, long id) {
+        List<Invoice> invoiceList = getAllInvoice();
+        for (Invoice invoice : invoiceList) {
+            if (invoice.getId() == id) {
+                sessionFactory.getCurrentSession().evict(invoice);
+                invoice.setTotalCharge(newInvoice.getTotalCharge());
+                sessionFactory.getCurrentSession().update(invoice);
+                return "Updated invoice with id " + id;
+            }
+        }
+        return "Can't find invoice with id " + id;
+    }
+
+    public String deleteAnInvoice(long id) {
+        Invoice invoice = sessionFactory.getCurrentSession().get(Invoice.class, id);
+        if(invoice != null) {
+            sessionFactory.getCurrentSession().delete(invoice);
+            return "Deleted invoice with id " + id;
+        }
+
+        return "Can't find invoice with id " + id;
     }
 }
