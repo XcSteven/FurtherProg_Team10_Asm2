@@ -11,26 +11,26 @@ public class Driver {
 	
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 
 	@CreatedDate
 	private ZonedDateTime dateCreated;
 
-	@OneToOne(mappedBy = "car")
-	private Car car;
 
-	@Column
 	private String license;
 	private String phone;
 	private double rating;
 
+	@OneToOne(mappedBy="driver")
+	private Car car;
 	public Driver() {
 	}
 
-	public Driver(long id, ZonedDateTime dateCreated, String license,
+	public Driver(long id, ZonedDateTime dateCreated, Car car, String license,
 				   String phone, double rating) {
 		super();
+		this.car = car;
 		this.id = id;
 		this.dateCreated = dateCreated;
 		this.license = license;
@@ -45,6 +45,11 @@ public class Driver {
 	public ZonedDateTime getDateCreated() {
 		return dateCreated;
 	}
+
+	public Car getCar() {
+		return car;
+	}
+
 	public String getLicense() {
 		return license;
 	}
@@ -62,6 +67,11 @@ public class Driver {
 	public void setDateCreated(ZonedDateTime dateCreated) {
 		this.dateCreated = dateCreated;
 	}
+
+	public void setCar(Car car) {
+		this.car = car;
+	}
+
 	public void setLicense(String license) {
 		this.license = license;
 	}

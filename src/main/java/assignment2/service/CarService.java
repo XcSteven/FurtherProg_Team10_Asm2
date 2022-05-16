@@ -3,8 +3,6 @@ package assignment2.service;
 import assignment2.model.Car;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

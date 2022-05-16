@@ -10,19 +10,13 @@ import java.util.Date;
 @Table(name= "car")
 public class Car {
 	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 
-	@CreatedDate
-	@Column(name = "created_date")
-	private ZonedDateTime dateCreated;
+//	@CreatedDate
+//	@Column(name = "created_date")
+//	private ZonedDateTime dateCreated;
 
-	@OneToOne(optional = false)
-	@JoinColumn(name = "driver_id", referencedColumnName = "id")
-	private Driver driver;
-
-	@Column
 	private String vehicleId;
 	private String make;
 	private String model;
@@ -32,6 +26,8 @@ public class Car {
 	private String licensePlate;
 	private double ratePerKm;
 
+	@OneToOne
+	private Driver driver;
 
 	public Car() {
 	}
@@ -41,7 +37,7 @@ public class Car {
 			   String licensePlate, double ratePerKm) {
 		super();
 		this.id = id;
-		this.dateCreated = dateCreated;
+//		this.dateCreated = dateCreated;
 		this.vehicleId = vehicleId;
 		this.make = make;
 		this.model= model;
@@ -56,9 +52,14 @@ public class Car {
 	public long getId() {
 		return id;
 	}
-	public ZonedDateTime getDateCreated() {
-		return dateCreated;
-	}
+//	public ZonedDateTime getDateCreated() {
+//		return dateCreated;
+//	}
+
+//	public Driver getDriver(){
+//		return driver;
+//	}
+
 	public String getVehicleId() {
 		return vehicleId;
 	}
@@ -88,9 +89,13 @@ public class Car {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public void setDateCreated(ZonedDateTime dateCreated) {
-		this.dateCreated = dateCreated;
-	}
+//	public void setDateCreated(ZonedDateTime dateCreated) {
+//		this.dateCreated = dateCreated;
+//	}
+
+//	public void setDriver(Driver driver){
+//		this.driver = driver;
+//	}
 	public void setVehicleId(String vehicleId) {
 		this.vehicleId = vehicleId;
 	}

@@ -1,6 +1,6 @@
 package assignment2.config;
 
-import assignment2.model.Car;
+import assignment2.model.*;
 import org.hibernate.SessionFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -12,30 +12,35 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import assignment2.model.Student;
-
 import java.util.Properties;
 
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @Configuration
 @EnableTransactionManagement
 @EnableWebMvc
 public class AppConfig {
 
-	@Bean
-	public Student student() {
-		return new Student();
-	}
-
     @Bean
-    public Car car() {
-        return new Car();
+    public Student student() {
+        return new Student();
     }
-	
 
     @Bean
-    public LocalSessionFactoryBean sessionFactory(){
+    public Car car() { return new Car(); }
+
+    @Bean
+    public Driver driver() { return new Driver(); }
+
+    @Bean
+    public Booking booking() { return new Booking(); }
+
+    @Bean
+    public Customer customer() { return new Customer(); }
+
+
+    @Bean
+    public LocalSessionFactoryBean sessionFactory() {
 
         Properties properties = new Properties();
         //For Postgresql
@@ -62,7 +67,7 @@ public class AppConfig {
     }
 
     @Bean
-    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory){
+    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
         HibernateTransactionManager tx = new HibernateTransactionManager(sessionFactory);
 
         return tx;
