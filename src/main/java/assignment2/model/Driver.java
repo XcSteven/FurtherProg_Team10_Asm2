@@ -1,5 +1,7 @@
 package assignment2.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -15,6 +17,9 @@ public class Driver {
 	private long id;
 
 	@CreatedDate
+	@Column(name = "created_date")
+	@JsonFormat(pattern = "dd.MM.YYYY")
+	@CreationTimestamp
 	private ZonedDateTime dateCreated;
 
 	@Column
