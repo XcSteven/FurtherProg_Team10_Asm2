@@ -18,6 +18,10 @@ public class Car {
 	@Column(name = "created_date")
 	private ZonedDateTime dateCreated;
 
+	@OneToOne(optional = false)
+	@JoinColumn(name = "driver_id", referencedColumnName = "id")
+	private Driver driver;
+
 	@Column
 	private String vehicleId;
 	private String make;

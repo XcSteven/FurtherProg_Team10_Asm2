@@ -17,6 +17,9 @@ public class Driver {
 	@CreatedDate
 	private ZonedDateTime dateCreated;
 
+	@OneToOne(mappedBy = "car")
+	private Car car;
+
 	@Column
 	private String license;
 	private String phone;
