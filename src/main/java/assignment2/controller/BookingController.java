@@ -1,7 +1,6 @@
 package assignment2.controller;
 
 import assignment2.model.Booking;
-import assignment2.model.Car;
 import assignment2.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

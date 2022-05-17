@@ -1,5 +1,7 @@
 package assignment2.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -10,13 +12,17 @@ import java.util.Date;
 @Table(name= "car")
 public class Car {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 
-//	@CreatedDate
-//	@Column(name = "created_date")
-//	private ZonedDateTime dateCreated;
+	@CreatedDate
+	@Column(name = "created_date")
+	@JsonFormat(pattern = "dd.MM.YYYY")
+	@CreationTimestamp
+	private ZonedDateTime dateCreated;
 
+	@Column
 	private String vehicleId;
 	private String make;
 	private String model;
@@ -26,8 +32,6 @@ public class Car {
 	private String licensePlate;
 	private double ratePerKm;
 
-	@OneToOne
-	private Driver driver;
 
 	public Car() {
 	}
@@ -37,7 +41,7 @@ public class Car {
 			   String licensePlate, double ratePerKm) {
 		super();
 		this.id = id;
-//		this.dateCreated = dateCreated;
+		this.dateCreated = dateCreated;
 		this.vehicleId = vehicleId;
 		this.make = make;
 		this.model= model;
@@ -52,14 +56,9 @@ public class Car {
 	public long getId() {
 		return id;
 	}
-//	public ZonedDateTime getDateCreated() {
-//		return dateCreated;
-//	}
-
-//	public Driver getDriver(){
-//		return driver;
-//	}
-
+	public ZonedDateTime getDateCreated() {
+		return dateCreated;
+	}
 	public String getVehicleId() {
 		return vehicleId;
 	}
@@ -89,13 +88,9 @@ public class Car {
 	public void setId(long id) {
 		this.id = id;
 	}
-//	public void setDateCreated(ZonedDateTime dateCreated) {
-//		this.dateCreated = dateCreated;
-//	}
-
-//	public void setDriver(Driver driver){
-//		this.driver = driver;
-//	}
+	public void setDateCreated(ZonedDateTime dateCreated) {
+		this.dateCreated = dateCreated;
+	}
 	public void setVehicleId(String vehicleId) {
 		this.vehicleId = vehicleId;
 	}

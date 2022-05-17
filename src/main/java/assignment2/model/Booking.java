@@ -1,9 +1,12 @@
 package assignment2.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name= "booking")
@@ -16,6 +19,9 @@ public class Booking {
 
 
 	@CreatedDate
+	@Column(name = "created_date")
+	@JsonFormat(pattern = "dd.MM.YYYY")
+	@CreationTimestamp
 	private ZonedDateTime dateCreated;
 
 	@Column
@@ -25,6 +31,7 @@ public class Booking {
 	private ZonedDateTime dropoff;
 	private double distance;
 
+	final static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 	public Booking() {
 	}
 
