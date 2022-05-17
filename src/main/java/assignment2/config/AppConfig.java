@@ -1,6 +1,7 @@
 package assignment2.config;
 
 import assignment2.model.Car;
+import assignment2.model.Customer;
 import org.hibernate.SessionFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -14,6 +15,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import assignment2.model.Student;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.Properties;
 
 
@@ -32,7 +35,11 @@ public class AppConfig {
     public Car car() {
         return new Car();
     }
-	
+
+    @Bean
+    public Customer customer() {
+        return new Customer();
+    }
 
     @Bean
     public LocalSessionFactoryBean sessionFactory(){
