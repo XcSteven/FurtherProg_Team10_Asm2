@@ -66,7 +66,7 @@ public class BookingService {
         List<Booking> bookingList = getAllBooking();
         List<Booking> searchList = new ArrayList<>();
         for (Booking booking : bookingList) {
-            if(booking.getDateCreated().format(formatter).contains(date)) {
+            if(booking.getDateCreated().format(formatter).toLowerCase().contains(date)) {
                 searchList.add(booking);
             }
         }

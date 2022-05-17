@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -63,5 +64,38 @@ public class CarService {
         }
 
         return "Can't find car with id " + id;
+    }
+
+    public List<Car> searchCarByMake(String make) {
+        List<Car> carList = getAllCar();
+        List<Car> searchList = new ArrayList<>();
+        for (Car car : carList) {
+            if(car.getMake().toLowerCase().contains(make)) {
+                searchList.add(car);
+            }
+        }
+        return searchList;
+    }
+
+    public List<Car> searchCarByModel(String model) {
+        List<Car> carList = getAllCar();
+        List<Car> searchList = new ArrayList<>();
+        for (Car car : carList) {
+            if(car.getModel().toLowerCase().contains(model)) {
+                searchList.add(car);
+            }
+        }
+        return searchList;
+    }
+
+    public List<Car> searchCarByColor(String color) {
+        List<Car> carList = getAllCar();
+        List<Car> searchList = new ArrayList<>();
+        for (Car car : carList) {
+            if(car.getColor().toLowerCase().contains(color)) {
+                searchList.add(car);
+            }
+        }
+        return searchList;
     }
 }

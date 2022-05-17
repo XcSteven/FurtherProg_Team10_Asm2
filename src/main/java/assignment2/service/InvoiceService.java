@@ -62,7 +62,7 @@ public class InvoiceService {
         List<Invoice> invoiceList = getAllInvoice();
         List<Invoice> searchList = new ArrayList<>();
         for (Invoice invoice : invoiceList) {
-            if(invoice.getDateCreated().format(formatter).contains(date)) {
+            if(invoice.getDateCreated().format(formatter).toLowerCase().contains(date)) {
                 searchList.add(invoice);
             }
         }

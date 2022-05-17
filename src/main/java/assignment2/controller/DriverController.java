@@ -1,5 +1,6 @@
 package assignment2.controller;
 
+import assignment2.model.Car;
 import assignment2.model.Driver;
 import assignment2.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,10 @@ public class DriverController {
     @DeleteMapping("/drivers/{id}")
     public String deleteDriver(@PathVariable Long id){
         return  driverService.deleteADriver(id);
+    }
+
+    @GetMapping("/drivers/search/license/{key}")
+    public List<Driver> searchDriverByLicense(@PathVariable String key) {
+        return driverService.searchDriverByLicense(key);
     }
 }
