@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 @Transactional
 @Service
@@ -53,5 +55,17 @@ public class InvoiceService {
         }
 
         return "Can't find invoice with id " + id;
+    }
+
+    public List<Invoice> searchInvoiceByDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        List<Invoice> invoiceList = getAllInvoice();
+        List<Invoice> searchList = new ArrayList<>();
+        for (Invoice invoice : invoiceList) {
+            if(invoice.getDateCreated().format(formatter).contains(date)) {
+                searchList.add(invoice);
+            }
+        }
+        return searchList;
     }
 }

@@ -20,7 +20,7 @@ public class Booking {
 
 	@CreatedDate
 	@Column(name = "created_date")
-	@JsonFormat(pattern = "dd.MM.YYYY")
+	@JsonFormat(pattern = "dd-MM-yyyy")
 	@CreationTimestamp
 	private ZonedDateTime dateCreated;
 
@@ -31,7 +31,6 @@ public class Booking {
 	private String endTime;
 	private double distance;
 
-	final static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 	public Booking() {
 	}
 

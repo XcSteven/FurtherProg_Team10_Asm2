@@ -37,4 +37,9 @@ public class InvoiceController {
     public String deleteInvoice(@PathVariable Long id){
         return invoiceService.deleteAnInvoice(id);
     }
+
+    @GetMapping("/invoices/search/{date}")
+    public List<Invoice> searchInvoiceByDate(@PathVariable String date) {
+        return invoiceService.searchInvoiceByDate(date);
+    }
 }
