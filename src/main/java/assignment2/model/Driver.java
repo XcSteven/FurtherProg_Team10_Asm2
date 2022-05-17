@@ -14,7 +14,7 @@ public class Driver {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@CreatedDate
 	@Column(name = "created_date")
@@ -30,7 +30,7 @@ public class Driver {
 	public Driver() {
 	}
 
-	public Driver(long id, ZonedDateTime dateCreated, String license,
+	public Driver(Long id, ZonedDateTime dateCreated, String license,
 				   String phone, double rating) {
 		super();
 		this.id = id;
@@ -41,7 +41,7 @@ public class Driver {
 	}
 
 	// Getters
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	public ZonedDateTime getDateCreated() {
@@ -58,7 +58,7 @@ public class Driver {
 	}
 
 	// Setters
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public void setDateCreated(ZonedDateTime dateCreated) {

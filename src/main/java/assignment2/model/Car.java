@@ -14,7 +14,7 @@ public class Car {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@CreatedDate
 	@Column(name = "created_date")
@@ -36,7 +36,7 @@ public class Car {
 	public Car() {
 	}
 
-	public Car(long id, ZonedDateTime dateCreated, String vehicleId, String make,
+	public Car(Long id, ZonedDateTime dateCreated, String vehicleId, String make,
 			   String model, String color, boolean convertible, double rating,
 			   String licensePlate, double ratePerKm) {
 		super();
@@ -53,7 +53,7 @@ public class Car {
 	}
 
 	// Getters
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	public ZonedDateTime getDateCreated() {
@@ -85,7 +85,7 @@ public class Car {
 	}
 
 	// Setters
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public void setDateCreated(ZonedDateTime dateCreated) {

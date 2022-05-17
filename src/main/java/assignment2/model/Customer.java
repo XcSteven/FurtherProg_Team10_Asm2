@@ -14,7 +14,7 @@ public class Customer {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 
 	@CreatedDate
@@ -33,7 +33,7 @@ public class Customer {
 	}
 
 
-	public Customer(long id, ZonedDateTime dateCreated, String name, String address, String phone) {
+	public Customer(Long id, ZonedDateTime dateCreated, String name, String address, String phone) {
 		super();
 		this.id = id;
 		this.dateCreated = dateCreated;
@@ -43,7 +43,7 @@ public class Customer {
 	}
 
 	//Getters
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	public ZonedDateTime getDateCreated() {
@@ -60,7 +60,7 @@ public class Customer {
 	}
 
 	// Setters
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public void setDateCreated(ZonedDateTime dateCreated) {

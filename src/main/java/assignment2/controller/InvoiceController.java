@@ -19,7 +19,7 @@ public class InvoiceController {
     }
 
     @RequestMapping(path = "/invoices/{id}", method = RequestMethod.GET)
-    public Invoice getAnInvoice(@PathVariable long id) {
+    public Invoice getAnInvoice(@PathVariable Long id) {
         return invoiceService.getAnInvoice(id);
     }
 
@@ -29,12 +29,12 @@ public class InvoiceController {
     }
 
     @PutMapping("/invoices/{id}")
-    public String updateInvoice(@RequestBody Invoice newInvoice, @PathVariable long id) {
+    public String updateInvoice(@RequestBody Invoice newInvoice, @PathVariable Long id) {
         return invoiceService.updateInvoice(newInvoice, id);
     }
 
     @DeleteMapping("/invoices/{id}")
-    public String deleteInvoice(@PathVariable long id){
+    public String deleteInvoice(@PathVariable Long id){
         return invoiceService.deleteAnInvoice(id);
     }
 }
