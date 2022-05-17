@@ -31,5 +31,4 @@ public class StudentService {
 		return criteria.list();
 	}
 
-
 }

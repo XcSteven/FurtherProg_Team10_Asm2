@@ -6,7 +6,6 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name= "booking")
@@ -31,7 +30,6 @@ public class Booking {
 	private ZonedDateTime dropoff;
 	private double distance;
 
-	final static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 	public Booking() {
 	}
 
