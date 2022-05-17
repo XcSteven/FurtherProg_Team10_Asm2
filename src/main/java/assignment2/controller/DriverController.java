@@ -24,7 +24,7 @@ public class DriverController {
     }
 
     @RequestMapping(path = "/drivers", method = RequestMethod.POST)
-    public long addDriver(@RequestBody Driver driver) {
+    public Long addDriver(@RequestBody Driver driver) {
         return driverService.saveDriver(driver);
     }
 

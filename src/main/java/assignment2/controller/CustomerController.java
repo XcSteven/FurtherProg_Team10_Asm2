@@ -31,7 +31,7 @@ public class CustomerController {
     }
 
     @RequestMapping(path = "/customers", method = RequestMethod.POST)
-    public long addCustomer(@RequestBody Customer customer) {
+    public Long addCustomer(@RequestBody Customer customer) {
         return customerService.saveCustomer(customer);
     }
 

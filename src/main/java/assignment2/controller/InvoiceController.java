@@ -24,7 +24,7 @@ public class InvoiceController {
     }
 
     @RequestMapping(path = "/invoices", method = RequestMethod.POST)
-    public long addInvoice(@RequestBody Invoice invoice) {
+    public Long addInvoice(@RequestBody Invoice invoice) {
         return invoiceService.saveInvoice(invoice);
     }
 

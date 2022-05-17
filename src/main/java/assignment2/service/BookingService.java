@@ -39,8 +39,8 @@ public class BookingService {
                 sessionFactory.getCurrentSession().evict(booking);
                 booking.setStartLocation(newBooking.getStartLocation());
                 booking.setEndLocation(newBooking.getEndLocation());
-                booking.setPickup(newBooking.getPickup());
-                booking.setDropoff(newBooking.getDropoff());
+                booking.setStartTime(newBooking.getStartTime());
+                booking.setEndTime(newBooking.getEndTime());
                 booking.setDistance(newBooking.getDistance());
                 sessionFactory.getCurrentSession().update(booking);
                 return "Updated booking with id " + id;
