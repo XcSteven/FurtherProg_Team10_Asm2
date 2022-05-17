@@ -38,7 +38,7 @@ public class BookingController {
         return  bookingService.deleteABooking(id);
     }
 
-    @GetMapping("/bookings/search/{date}")
+    @GetMapping("/bookings/search/date/{date}")
     public List<Booking> searchBookingByDate(@PathVariable String date) {
         return bookingService.searchBookingByDate(date);
     }
