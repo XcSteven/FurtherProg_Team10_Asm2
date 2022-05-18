@@ -74,6 +74,10 @@ public class Booking {
 		return distance;
 	}
 
+	public Customer getCustomer() {
+		return customer;
+	}
+
 	// Setters
 	public void setId(Long id) {
 		this.id = id;
@@ -95,5 +99,9 @@ public class Booking {
 	}
 	public void setDistance(double distance) {
 		this.distance = distance;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 }

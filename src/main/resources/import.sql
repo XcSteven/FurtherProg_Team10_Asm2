@@ -16,6 +16,9 @@ insert into car (created_date, vehicleId, make, model, color, convertible, ratin
 insert into car (created_date, vehicleId, make, model, color, convertible, rating, licensePlate, ratePerKm) values (CURRENT_TIMESTAMP ,'41324687','Lamborghini', 'X8', 'blue', false, 6.5, '4132.4687', 32.6);
 insert into car (created_date, vehicleId, make, model, color, convertible, rating, licensePlate, ratePerKm) values (CURRENT_TIMESTAMP ,'31525526','Vinfast', 'X9', 'white', false, 8.3, '3152.5526', 6);
 
+insert into customer (created_date, name, address, phone) values (CURRENT_TIMESTAMP, 'Andy The First', '1 Street, Ward, City', '01111111111')
+insert into customer (created_date, name, address, phone) values (CURRENT_TIMESTAMP, 'Daniel The Second', '2 Street, Ward, City', '0222222222')
+insert into customer (created_date, name, address, phone) values (CURRENT_TIMESTAMP, 'Anna The Third', '3 Street, Ward, City', '03333333333s')
 
 
 

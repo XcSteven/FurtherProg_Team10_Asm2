@@ -29,7 +29,7 @@ public class Customer {
 	private String address;
 	private String phone;
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer_id")
 	private Set<Booking> bookings;
 
