@@ -1,7 +1,9 @@
 package assignment2.controller;
 
+import assignment2.model.Booking;
 import assignment2.model.Customer;
 import assignment2.service.CustomerService;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,12 +14,10 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-
     @RequestMapping(path = "/customers", method = RequestMethod.GET)
     public List<Customer> getAllCustomers(){
         return customerService.getAllCustomer();
     }
-
     @RequestMapping(path = "/customers/{id}", method = RequestMethod.GET)
     public Customer getACustomer(@PathVariable Long id) {
         return customerService.getACustomer(id);
@@ -38,18 +38,8 @@ public class CustomerController {
         return  customerService.deleteACustomer(id);
     }
 
-    @GetMapping("/customers/search/name/{key}")
-    public List<Customer> searchCustomerByName(@PathVariable String key) {
-        return customerService.searchCustomerByName(key);
-    }
-
-    @GetMapping("/customers/search/address/{key}")
-    public List<Customer> searchCustomerByAddress(@PathVariable String key) {
-        return customerService.searchCustomerByAddress(key);
-    }
-
-    @GetMapping("/customers/search/phone/{key}")
-    public List<Customer> searchCustomerByPhone(@PathVariable String key) {
-        return customerService.searchCustomerByPhone(key);
+    @PutMapping("/customers/{id}/book")
+    public Customer book(@RequestBody Booking booking, @PathVariable Long id) {
+        return customerService.addBooking(id, booking);
     }
 }

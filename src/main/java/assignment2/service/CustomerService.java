@@ -95,7 +95,21 @@ public class CustomerService {
     }
 
     public Customer addBooking(Long id, Booking booking){
-        getACustomer(id).setBookings(booking);
+
+        List<Customer> customerList = getAllCustomer();
+        for (Customer customer : customerList) {
+            if (customer.getId() == id) {
+                sessionFactory.getCurrentSession().save(booking);
+                sessionFactory.getCurrentSession().evict(booking);
+                booking.setCustomer_id(id);
+                sessionFactory.getCurrentSession().update(booking);
+                Booking updateBooking = sessionFactory.getCurrentSession().get(Booking.class, booking.getId());
+                sessionFactory.getCurrentSession().evict(customer);
+                customer.getBookings().add(updateBooking);
+                sessionFactory.getCurrentSession().update(customer);
+
+            }
+        }
         return getACustomer(id);
     }
 }

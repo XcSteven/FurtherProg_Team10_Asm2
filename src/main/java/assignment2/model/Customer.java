@@ -1,6 +1,7 @@
 package assignment2.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -28,9 +29,9 @@ public class Customer {
 	private String name;
 	private String address;
 	private String phone;
-
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "customer_id")
+	@JsonManagedReference
 	private Set<Booking> bookings;
 
 	public Customer() {
@@ -62,6 +63,7 @@ public class Customer {
 	public String getPhone() {
 		return phone;
 	}
+
 	public Set<Booking> getBookings() {
 		return bookings;
 	}
@@ -83,7 +85,7 @@ public class Customer {
 		this.phone = phone;
 	}
 
-	public void setBookings(Booking booking) {
-		this.bookings.add(booking);
+	public void addBookings(Booking booking) {
+		this.bookings.add(booking) ;
 	}
 }

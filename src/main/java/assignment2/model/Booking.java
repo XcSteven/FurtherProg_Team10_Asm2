@@ -1,6 +1,9 @@
 package assignment2.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -31,8 +34,14 @@ public class Booking {
 	private String endTime;
 	private double distance;
 
+	private Long customer_id;
+	@OneToOne
+	@JoinColumn(name = "invoice_id", referencedColumnName = "id")
+	@JsonManagedReference
+	private Invoice invoice;
 	@ManyToOne
 	@JoinColumn(name = "customer_id", insertable = false, updatable = false)
+	@JsonBackReference
 	private Customer customer;
 
 	public Booking() {
@@ -40,7 +49,7 @@ public class Booking {
 
 	public Booking(Long id, ZonedDateTime dateCreated, String startLocation,
 				   String endLocation, String startTime, String endTime,
-				   double distance) {
+				   double distance, Long customer_id) {
 		super();
 		this.id = id;
 		this.dateCreated = dateCreated;
@@ -49,6 +58,7 @@ public class Booking {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.distance = distance;
+		this.customer_id = customer_id;
 	}
 
 	// Getters
@@ -74,6 +84,14 @@ public class Booking {
 		return distance;
 	}
 
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public Long getCustomer_id() {
+		return customer_id;
+	}
+
 	// Setters
 	public void setId(Long id) {
 		this.id = id;
@@ -95,5 +113,13 @@ public class Booking {
 	}
 	public void setDistance(double distance) {
 		this.distance = distance;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public void setCustomer_id(Long customer_id) {
+		this.customer_id = customer_id;
 	}
 }

@@ -2,6 +2,7 @@ package assignment2.controller;
 
 import assignment2.model.Booking;
 import assignment2.service.BookingService;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +12,6 @@ import java.util.List;
 public class BookingController {
     @Autowired
     private BookingService bookingService;
-
 
     @RequestMapping(path = "/bookings", method = RequestMethod.GET)
     public List<Booking> getAllBookings(){
@@ -41,5 +41,10 @@ public class BookingController {
     @GetMapping("/bookings/search/date/{date}")
     public List<Booking> searchBookingByDate(@PathVariable String date) {
         return bookingService.searchBookingByDate(date);
+    }
+
+    @GetMapping("/bookings/search/date-range/{start}/{end}")
+    public List<Booking> searchBookingByDateRange(@PathVariable("start") String start,@PathVariable("end") String end ) {
+        return bookingService.searchBookingByDateRange(start, end);
     }
 }

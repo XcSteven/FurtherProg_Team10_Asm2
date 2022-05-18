@@ -1,5 +1,6 @@
 package assignment2.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
@@ -25,6 +26,9 @@ public class Invoice {
 	@Column
 	private double totalCharge;
 
+	@OneToOne
+	@JsonBackReference
+	private Booking booking;
 	public Invoice() {
 	}
 

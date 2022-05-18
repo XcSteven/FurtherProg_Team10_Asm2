@@ -1,12 +1,16 @@
 package assignment2.service;
 
 import assignment2.model.Invoice;
+import assignment2.model.Invoice;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,5 +71,23 @@ public class InvoiceService {
             }
         }
         return searchList;
+    }
+
+    public List<Invoice> searchInvoiceByDateRange (String start, String end){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate startTimeLocal = LocalDate.parse(start, formatter);
+        LocalDate endTimeLocal = LocalDate.parse(end, formatter);
+
+        ZonedDateTime startTime = startTimeLocal.atStartOfDay(ZoneId.systemDefault());
+        ZonedDateTime endTime = endTimeLocal.atStartOfDay(ZoneId.systemDefault());
+
+        List<Invoice> displayList = new ArrayList<>();
+        for (Invoice booking : getAllInvoice()){
+            ZonedDateTime createdDate = booking.getDateCreated();
+            if(!(createdDate.isBefore(startTime) || createdDate.isAfter(endTime))){
+                displayList.add(booking);
+            }
+        }
+        return displayList;
     }
 }

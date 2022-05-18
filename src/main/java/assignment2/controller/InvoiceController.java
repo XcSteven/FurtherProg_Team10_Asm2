@@ -1,6 +1,7 @@
 package assignment2.controller;
 
 import assignment2.model.Invoice;
+import assignment2.model.Invoice;
 import assignment2.service.InvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -41,5 +42,10 @@ public class InvoiceController {
     @GetMapping("/invoices/search/date/{date}")
     public List<Invoice> searchInvoiceByDate(@PathVariable String date) {
         return invoiceService.searchInvoiceByDate(date);
+    }
+
+    @GetMapping("/invoices/search/date-range/{start}/{end}")
+    public List<Invoice> searchInvoiceByDateRange(@PathVariable("start") String start, @PathVariable("end") String end ) {
+        return invoiceService.searchInvoiceByDateRange(start, end);
     }
 }
