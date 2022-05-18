@@ -1,5 +1,6 @@
 package assignment2.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
@@ -35,6 +36,7 @@ public class Car {
 	private Long driverId;
 
 	@OneToOne
+	@JsonBackReference
 	private Driver driver;
 
 	public Car() {

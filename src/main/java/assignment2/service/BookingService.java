@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.awt.print.Book;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,5 +74,23 @@ public class BookingService {
             }
         }
         return searchList;
+    }
+
+    public List<Booking> searchBookingByDateRange (String start, String end){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate startTimeLocal = LocalDate.parse(start, formatter);
+        LocalDate endTimeLocal = LocalDate.parse(end, formatter);
+
+        ZonedDateTime startTime = startTimeLocal.atStartOfDay(ZoneId.systemDefault());
+        ZonedDateTime endTime = endTimeLocal.atStartOfDay(ZoneId.systemDefault());
+
+        List<Booking> displayList = new ArrayList<>();
+        for (Booking booking : getAllBooking()){
+            ZonedDateTime createdDate = booking.getDateCreated();
+            if(!(createdDate.isBefore(startTime) || createdDate.isAfter(endTime))){
+                displayList.add(booking);
+            }
+        }
+        return displayList;
     }
 }

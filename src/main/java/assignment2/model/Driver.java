@@ -1,6 +1,7 @@
 package assignment2.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -29,6 +30,8 @@ public class Driver {
 
 	@OneToOne
 	@JoinColumn(name = "car_id", referencedColumnName = "id")
+	@JsonManagedReference
+
 	private Car car;
 	public Driver() {
 	}

@@ -42,4 +42,9 @@ public class DriverController {
     public String addDriver(@PathVariable("driverId") Long driverId,@PathVariable("carId") Long carId) {
         return driverService.driverChooseCar(driverId, carId);
     }
+
+    @GetMapping("/drivers/search/license/{key}")
+    public List<Driver> searchDriverByLicense(@PathVariable String key) {
+        return driverService.searchDriverByLicense(key);
+    }
 }
