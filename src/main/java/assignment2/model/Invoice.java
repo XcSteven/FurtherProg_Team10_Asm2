@@ -14,7 +14,7 @@ public class Invoice {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@CreatedDate
 	@Column(name = "created_date")
@@ -28,7 +28,7 @@ public class Invoice {
 	public Invoice() {
 	}
 
-	public Invoice(long id, ZonedDateTime dateCreated, double totalCharge) {
+	public Invoice(Long id, ZonedDateTime dateCreated, double totalCharge) {
 		super();
 		this.id = id;
 		this.dateCreated = dateCreated;
@@ -36,7 +36,7 @@ public class Invoice {
 	}
 
 	// Getters
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	public ZonedDateTime getDateCreated() {
@@ -47,7 +47,7 @@ public class Invoice {
 	}
 
 	// Setters
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public void setDateCreated(ZonedDateTime dateCreated) {

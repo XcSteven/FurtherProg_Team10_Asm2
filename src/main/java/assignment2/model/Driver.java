@@ -13,8 +13,8 @@ public class Driver {
 	
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
 
 	@CreatedDate
 	@Column(name = "created_date")
@@ -27,12 +27,13 @@ public class Driver {
 	private String phone;
 	private double rating;
 
-	@OneToOne(mappedBy="driver")
+	@OneToOne
+	@JoinColumn(name = "car_id", referencedColumnName = "id")
 	private Car car;
 	public Driver() {
 	}
 
-	public Driver(long id, ZonedDateTime dateCreated, Car car, String license,
+	public Driver(Long id, ZonedDateTime dateCreated, Car car, String license,
 				   String phone, double rating) {
 		super();
 		this.car = car;
@@ -44,7 +45,7 @@ public class Driver {
 	}
 
 	// Getters
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	public ZonedDateTime getDateCreated() {
@@ -66,7 +67,7 @@ public class Driver {
 	}
 
 	// Setters
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public void setDateCreated(ZonedDateTime dateCreated) {
@@ -85,5 +86,17 @@ public class Driver {
 	}
 	public void setRating(double rating) {
 		this.rating = rating;
+	}
+
+	@Override
+	public String toString() {
+		return "Driver{" +
+				"id=" + id +
+				", dateCreated=" + dateCreated +
+				", license='" + license + '\'' +
+				", phone='" + phone + '\'' +
+				", rating=" + rating +
+				", car=" + car +
+				'}';
 	}
 }

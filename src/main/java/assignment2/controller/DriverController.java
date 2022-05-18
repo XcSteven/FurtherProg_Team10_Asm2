@@ -18,22 +18,27 @@ public class DriverController {
     }
 
     @RequestMapping(path = "/drivers/{id}", method = RequestMethod.GET)
-    public Driver getADriver(@PathVariable long id) {
+    public Driver getADriver(@PathVariable Long id) {
         return driverService.getADriver(id);
     }
 
     @RequestMapping(path = "/drivers", method = RequestMethod.POST)
-    public long addDriver(@RequestBody Driver driver) {
+    public Long addDriver(@RequestBody Driver driver) {
         return driverService.saveDriver(driver);
     }
 
     @PutMapping("/drivers/{id}")
-    public String updateDriver(@RequestBody Driver newDriver, @PathVariable long id) {
+    public String updateDriver(@RequestBody Driver newDriver, @PathVariable Long id) {
         return driverService.updateDriver(newDriver, id);
     }
 
     @DeleteMapping("/drivers/{id}")
-    public String deleteDriver(@PathVariable long id){
+    public String deleteDriver(@PathVariable Long id){
         return  driverService.deleteADriver(id);
+    }
+
+    @PostMapping(path = "/drivers/{driverId}/choose-car/{carId}")
+    public String addDriver(@PathVariable("driverId") Long driverId,@PathVariable("carId") Long carId) {
+        return driverService.driverChooseCar(driverId, carId);
     }
 }

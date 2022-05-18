@@ -6,6 +6,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name= "customer")
@@ -14,7 +15,7 @@ public class Customer {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 
 	@CreatedDate
@@ -28,12 +29,15 @@ public class Customer {
 	private String address;
 	private String phone;
 
+	@OneToMany
+	@JoinColumn(name = "customer_id")
+	private Set<Booking> bookings;
 
 	public Customer() {
 	}
 
 
-	public Customer(long id, ZonedDateTime dateCreated, String name, String address, String phone) {
+	public Customer(Long id, ZonedDateTime dateCreated, String name, String address, String phone) {
 		super();
 		this.id = id;
 		this.dateCreated = dateCreated;
@@ -43,7 +47,7 @@ public class Customer {
 	}
 
 	//Getters
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	public ZonedDateTime getDateCreated() {
@@ -58,9 +62,12 @@ public class Customer {
 	public String getPhone() {
 		return phone;
 	}
+	public Set<Booking> getBookings() {
+		return bookings;
+	}
 
 	// Setters
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public void setDateCreated(ZonedDateTime dateCreated) {
@@ -74,5 +81,9 @@ public class Customer {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public void setBookings(Booking booking) {
+		this.bookings.add(booking);
 	}
 }

@@ -13,13 +13,13 @@ import java.util.List;
 @Service
 public class CarService {
     @Autowired
-    private SessionFactory sessionFactory;
+        private SessionFactory sessionFactory;
 
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+        public void setSessionFactory(SessionFactory sessionFactory) {
+            this.sessionFactory = sessionFactory;
+        }
     
-    public long saveCar(Car car) {
+    public Long saveCar(Car car) {
         sessionFactory.getCurrentSession().save(car);
         return car.getId();
     }
@@ -29,11 +29,11 @@ public class CarService {
         return criteria.list();
     }
 
-    public Car getACar(long id) {
+    public Car getACar(Long id) {
         return sessionFactory.getCurrentSession().get(Car.class, id);
     }
 
-    public String updateCar(Car newCar, long id) {
+    public String updateCar(Car newCar, Long id) {
         List<Car> carList = getAllCar();
         for (Car car : carList) {
             if (car.getId() == id) {
@@ -53,7 +53,7 @@ public class CarService {
         return "Can't find car with id " + id;
     }
 
-    public String deleteACar(long id) {
+    public String deleteACar(Long id) {
         Car car = sessionFactory.getCurrentSession().get(Car.class, id);
         if(car != null) {
             sessionFactory.getCurrentSession().delete(car);
