@@ -18,7 +18,7 @@ public class Invoice {
 
 	@CreatedDate
 	@Column(name = "created_date")
-	@JsonFormat(pattern = "dd.MM.YYYY")
+	@JsonFormat(pattern = "dd-MM-yyyy")
 	@CreationTimestamp
 	private ZonedDateTime dateCreated;
 

@@ -38,5 +38,19 @@ public class CarController {
         return  carService.deleteACar(id);
     }
 
+    @GetMapping("/cars/search/make/{key}")
+    public List<Car> searchCarByMake(@PathVariable String key) {
+        return carService.searchCarByMake(key);
+    }
+
+    @GetMapping("/cars/search/model/{key}")
+    public List<Car> searchCarByModel(@PathVariable String key) {
+        return carService.searchCarByModel(key);
+    }
+
+    @GetMapping("/cars/search/color/{key}")
+    public List<Car> searchCarByColor(@PathVariable String key) {
+        return carService.searchCarByColor(key);
+    }
 }
 

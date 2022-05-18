@@ -65,7 +65,7 @@ public class CustomerService {
         List<Customer> customerList = getAllCustomer();
         List<Customer> searchList = new ArrayList<>();
         for (Customer customer : customerList) {
-            if(customer.getName().contains(name)) {
+            if(customer.getName().toLowerCase().contains(name)) {
                 searchList.add(customer);
             }
         }
@@ -76,7 +76,7 @@ public class CustomerService {
         List<Customer> customerList = getAllCustomer();
         List<Customer> searchList = new ArrayList<>();
         for (Customer customer : customerList) {
-            if(customer.getAddress().contains(add)) {
+            if(customer.getAddress().toLowerCase().contains(add)) {
                 searchList.add(customer);
             }
         }
@@ -87,7 +87,7 @@ public class CustomerService {
         List<Customer> customerList = getAllCustomer();
         List<Customer> searchList = new ArrayList<>();
         for (Customer customer : customerList) {
-            if(customer.getPhone().contains(phone)) {
+            if(customer.getPhone().toLowerCase().contains(phone)) {
                 searchList.add(customer);
             }
         }

@@ -12,6 +12,7 @@ public class DriverController {
     @Autowired
     private DriverService driverService;
 
+
     @RequestMapping(path = "/drivers", method = RequestMethod.GET)
     public List<Driver> getAllDrivers(){
         return driverService.getAllDriver();

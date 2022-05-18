@@ -25,8 +25,7 @@ public class DriverService {
         return driver.getId();
     }
 
-
-    public List<Driver> getAllDriver(){
+    public List<Driver> getAllDriver() {
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Driver.class);
         return criteria.list();
     }

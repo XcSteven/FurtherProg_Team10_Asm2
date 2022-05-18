@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.awt.print.Book;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 @Transactional
 @Service
@@ -39,8 +41,8 @@ public class BookingService {
                 sessionFactory.getCurrentSession().evict(booking);
                 booking.setStartLocation(newBooking.getStartLocation());
                 booking.setEndLocation(newBooking.getEndLocation());
-                booking.setPickup(newBooking.getPickup());
-                booking.setDropoff(newBooking.getDropoff());
+                booking.setStartTime(newBooking.getStartTime());
+                booking.setEndTime(newBooking.getEndTime());
                 booking.setDistance(newBooking.getDistance());
                 sessionFactory.getCurrentSession().update(booking);
                 return "Updated booking with id " + id;
@@ -57,5 +59,17 @@ public class BookingService {
         }
 
         return "Can't find booking with id " + id;
+    }
+
+    public List<Booking> searchBookingByDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        List<Booking> bookingList = getAllBooking();
+        List<Booking> searchList = new ArrayList<>();
+        for (Booking booking : bookingList) {
+            if(booking.getDateCreated().format(formatter).toLowerCase().contains(date)) {
+                searchList.add(booking);
+            }
+        }
+        return searchList;
     }
 }

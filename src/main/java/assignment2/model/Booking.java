@@ -6,6 +6,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name= "booking")
@@ -19,15 +20,15 @@ public class Booking {
 
 	@CreatedDate
 	@Column(name = "created_date")
-	@JsonFormat(pattern = "dd.MM.YYYY")
+	@JsonFormat(pattern = "dd-MM-yyyy")
 	@CreationTimestamp
 	private ZonedDateTime dateCreated;
 
 	@Column
 	private String startLocation;
 	private String endLocation;
-	private ZonedDateTime pickup;
-	private ZonedDateTime dropoff;
+	private String startTime;
+	private String endTime;
 	private double distance;
 
 	@ManyToOne
@@ -38,15 +39,15 @@ public class Booking {
 	}
 
 	public Booking(Long id, ZonedDateTime dateCreated, String startLocation,
-				   String endLocation, ZonedDateTime pickup, ZonedDateTime dropoff,
+				   String endLocation, String startTime, String endTime,
 				   double distance) {
 		super();
 		this.id = id;
 		this.dateCreated = dateCreated;
 		this.startLocation = startLocation;
 		this.endLocation = endLocation;
-		this.pickup = pickup;
-		this.dropoff = dropoff;
+		this.startTime = startTime;
+		this.endTime = endTime;
 		this.distance = distance;
 	}
 
@@ -63,11 +64,11 @@ public class Booking {
 	public String getEndLocation() {
 		return endLocation;
 	}
-	public ZonedDateTime getPickup() {
-		return pickup;
+	public String getStartTime() {
+		return startTime;
 	}
-	public ZonedDateTime getDropoff() {
-		return dropoff;
+	public String getEndTime() {
+		return endTime;
 	}
 	public double getDistance() {
 		return distance;
@@ -86,11 +87,11 @@ public class Booking {
 	public void setEndLocation(String endLocation) {
 		this.endLocation = endLocation;
 	}
-	public void setPickup(ZonedDateTime pickup) {
-		this.pickup = pickup;
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
 	}
-	public void setDropoff(ZonedDateTime dropoff) {
-		this.dropoff = dropoff;
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
 	}
 	public void setDistance(double distance) {
 		this.distance = distance;
