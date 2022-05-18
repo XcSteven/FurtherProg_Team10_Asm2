@@ -23,7 +23,11 @@ public class Student {
 		this.id = id;
 	}
 
-	public int getId() {
+    public Student(String name) {
+		this.name = name;
+    }
+
+    public int getId() {
 		return id;
 	}
 
