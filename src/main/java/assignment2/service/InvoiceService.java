@@ -18,7 +18,7 @@ public class InvoiceService {
         this.sessionFactory = sessionFactory;
     }
 
-    public long saveInvoice(Invoice invoice) {
+    public Long saveInvoice(Invoice invoice) {
         sessionFactory.getCurrentSession().save(invoice);
         return invoice.getId();
     }
@@ -28,11 +28,11 @@ public class InvoiceService {
         return criteria.list();
     }
 
-    public Invoice getAnInvoice(long id) {
+    public Invoice getAnInvoice(Long id) {
         return sessionFactory.getCurrentSession().get(Invoice.class, id);
     }
 
-    public String updateInvoice(Invoice newInvoice, long id) {
+    public String updateInvoice(Invoice newInvoice, Long id) {
         List<Invoice> invoiceList = getAllInvoice();
         for (Invoice invoice : invoiceList) {
             if (invoice.getId() == id) {
@@ -45,7 +45,7 @@ public class InvoiceService {
         return "Can't find invoice with id " + id;
     }
 
-    public String deleteAnInvoice(long id) {
+    public String deleteAnInvoice(Long id) {
         Invoice invoice = sessionFactory.getCurrentSession().get(Invoice.class, id);
         if(invoice != null) {
             sessionFactory.getCurrentSession().delete(invoice);

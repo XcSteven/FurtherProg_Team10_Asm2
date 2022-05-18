@@ -19,7 +19,7 @@ public class BookingService {
         this.sessionFactory = sessionFactory;
     }
 
-    public long saveBooking(Booking booking) {
+    public Long saveBooking(Booking booking) {
         sessionFactory.getCurrentSession().save(booking);
         return booking.getId();
     }
@@ -29,10 +29,10 @@ public class BookingService {
         return criteria.list();
     }
 
-    public Booking getABooking(long id) {
+    public Booking getABooking(Long id) {
         return sessionFactory.getCurrentSession().get(Booking.class, id);
     }
-    public String updateBooking(Booking newBooking, long id) {
+    public String updateBooking(Booking newBooking, Long id) {
         List<Booking> bookingList = getAllBooking();
         for (Booking booking : bookingList) {
             if (booking.getId() == id) {
@@ -49,7 +49,7 @@ public class BookingService {
         return "Can't find booking with id " + id;
     }
 
-    public String deleteABooking(long id) {
+    public String deleteABooking(Long id) {
         Booking booking = sessionFactory.getCurrentSession().get(Booking.class, id);
         if(booking != null) {
             sessionFactory.getCurrentSession().delete(booking);

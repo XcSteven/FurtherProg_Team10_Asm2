@@ -14,17 +14,13 @@ public class Car {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@CreatedDate
 	@Column(name = "created_date")
 	@JsonFormat(pattern = "dd.MM.YYYY")
 	@CreationTimestamp
 	private ZonedDateTime dateCreated;
-
-	@OneToOne(optional = false)
-	@JoinColumn(name = "driver_id", referencedColumnName = "id")
-	private Driver driver;
 
 	@Column
 	private String vehicleId;
@@ -36,13 +32,17 @@ public class Car {
 	private String licensePlate;
 	private double ratePerKm;
 
+	private Long driverId;
+
+	@OneToOne
+	private Driver driver;
 
 	public Car() {
 	}
 
-	public Car(long id, ZonedDateTime dateCreated, String vehicleId, String make,
+	public Car(Long id, ZonedDateTime dateCreated, String vehicleId, String make,
 			   String model, String color, boolean convertible, double rating,
-			   String licensePlate, double ratePerKm) {
+			   String licensePlate, double ratePerKm, Long driverId) {
 		super();
 		this.id = id;
 		this.dateCreated = dateCreated;
@@ -54,10 +54,11 @@ public class Car {
 		this.rating = rating;
 		this.licensePlate = licensePlate;
 		this.ratePerKm = ratePerKm;
+		this.driverId = driverId;
 	}
 
 	// Getters
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	public ZonedDateTime getDateCreated() {
@@ -88,8 +89,10 @@ public class Car {
 		return ratePerKm;
 	}
 
+	public Long getDriverId(){return  driverId;}
+
 	// Setters
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public void setDateCreated(ZonedDateTime dateCreated) {
@@ -119,4 +122,6 @@ public class Car {
 	public void setRatePerKm(double ratePerKm) {
 		this.ratePerKm = ratePerKm;
 	}
+
+	public void setDriverId(Long driverId) {	this.driverId = driverId;}
 }

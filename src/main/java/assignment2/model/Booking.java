@@ -14,7 +14,7 @@ public class Booking {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 
 	@CreatedDate
@@ -30,10 +30,14 @@ public class Booking {
 	private ZonedDateTime dropoff;
 	private double distance;
 
+	@ManyToOne
+	@JoinColumn(name = "customer_id", insertable = false, updatable = false)
+	private Customer customer;
+
 	public Booking() {
 	}
 
-	public Booking(long id, ZonedDateTime dateCreated, String startLocation,
+	public Booking(Long id, ZonedDateTime dateCreated, String startLocation,
 				   String endLocation, ZonedDateTime pickup, ZonedDateTime dropoff,
 				   double distance) {
 		super();
@@ -47,7 +51,7 @@ public class Booking {
 	}
 
 	// Getters
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	public ZonedDateTime getDateCreated() {
@@ -70,7 +74,7 @@ public class Booking {
 	}
 
 	// Setters
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public void setDateCreated(ZonedDateTime dateCreated) {

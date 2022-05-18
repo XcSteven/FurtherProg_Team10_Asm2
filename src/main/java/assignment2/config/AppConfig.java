@@ -1,6 +1,6 @@
 package assignment2.config;
 
-import assignment2.model.Car;
+import assignment2.model.*;
 import org.hibernate.SessionFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -12,8 +12,8 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import assignment2.model.Student;
-
+import java.util.List;
+import java.util.Optional;
 import java.util.Properties;
 
 
@@ -32,7 +32,24 @@ public class AppConfig {
     public Car car() {
         return new Car();
     }
-	
+
+    @Bean
+    public Customer customer() {
+        return new Customer();
+    }
+    @Bean
+    public Driver driver() {
+        return new Driver();
+    }
+    @Bean
+    public Booking booking() {
+        return new Booking();
+    }
+
+    @Bean
+    public Invoice invoice() {
+        return new Invoice();
+    }
 
     @Bean
     public LocalSessionFactoryBean sessionFactory(){
@@ -43,7 +60,7 @@ public class AppConfig {
         //For mysql
         //properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         properties.put("hibernate.show_sql", true);
-        properties.put("hibernate.hbm2ddl.auto", "update");
+        properties.put("hibernate.hbm2ddl.auto", "create");
 
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
 
@@ -57,6 +74,7 @@ public class AppConfig {
 
         sessionFactoryBean.setDataSource(dataSource);
         sessionFactoryBean.setHibernateProperties(properties);
+
 
         return sessionFactoryBean;
     }

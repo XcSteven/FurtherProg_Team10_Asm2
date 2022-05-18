@@ -19,22 +19,22 @@ public class CarController {
     }
 
     @RequestMapping(path = "/cars/{id}", method = RequestMethod.GET)
-    public Car getACar(@PathVariable long id) {
+    public Car getACar(@PathVariable Long id) {
         return carService.getACar(id);
     }
 
     @RequestMapping(path = "/cars", method = RequestMethod.POST)
-    public long addCar(@RequestBody Car car) {
+    public Long addCar(@RequestBody Car car) {
         return carService.saveCar(car);
     }
 
     @PutMapping("/cars/{id}")
-    public String updateCar(@RequestBody Car newCar, @PathVariable long id) {
+    public String updateCar(@RequestBody Car newCar, @PathVariable Long id) {
         return carService.updateCar(newCar, id);
     }
 
     @DeleteMapping("/cars/{id}")
-    public String deleteCar(@PathVariable long id){
+    public String deleteCar(@PathVariable Long id){
         return  carService.deleteACar(id);
     }
 

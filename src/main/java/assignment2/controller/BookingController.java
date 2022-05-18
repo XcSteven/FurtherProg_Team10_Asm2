@@ -19,22 +19,22 @@ public class BookingController {
     }
 
     @RequestMapping(path = "/bookings/{id}", method = RequestMethod.GET)
-    public Booking getABooking(@PathVariable long id) {
+    public Booking getABooking(@PathVariable Long id) {
         return bookingService.getABooking(id);
     }
 
     @RequestMapping(path = "/bookings", method = RequestMethod.POST)
-    public long addBooking(@RequestBody Booking booking) {
+    public Long addBooking(@RequestBody Booking booking) {
         return bookingService.saveBooking(booking);
     }
 
     @PutMapping("/bookings/{id}")
-    public String updateBooking(@RequestBody Booking newBooking, @PathVariable long id) {
+    public String updateBooking(@RequestBody Booking newBooking, @PathVariable Long id) {
         return bookingService.updateBooking(newBooking, id);
     }
 
     @DeleteMapping("/bookings/{id}")
-    public String deleteBooking(@PathVariable long id){
+    public String deleteBooking(@PathVariable Long id){
         return  bookingService.deleteABooking(id);
     }
 }
