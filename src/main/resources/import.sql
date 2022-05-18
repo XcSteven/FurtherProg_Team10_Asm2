@@ -40,6 +40,22 @@ insert into booking (created_date, startLocation, endLocation, startTime, endTim
 insert into booking (created_date, startLocation, endLocation, startTime, endTime, distance, customer_id) values (to_timestamp('06 04 2022', 'dd MM YYYY'), 'D7', 'D9', '3AM', '5:30AM', 1, '3');
 insert into booking (created_date, startLocation, endLocation, startTime, endTime, distance, customer_id) values (to_timestamp('02 05 2022', 'dd MM YYYY'), 'D2', 'D7', '1PM', '5PM', 3.4, '2');
 
+insert into invoice (created_date, totalCharge) values (to_timestamp('05 12 2022', 'dd MM YYYY'), 25);
+insert into invoice (created_date, totalCharge) values (to_timestamp('12 11 2022', 'dd MM YYYY'), 11);
+insert into invoice (created_date, totalCharge) values (to_timestamp('13 10 2022', 'dd MM YYYY'), 11.2);
+insert into invoice (created_date, totalCharge) values (to_timestamp('16 09 2022', 'dd MM YYYY'), 10.3);
+insert into invoice (created_date, totalCharge) values (to_timestamp('18 08 2022', 'dd MM YYYY'), 11.6);
+insert into invoice (created_date, totalCharge) values (to_timestamp('12 07 2022', 'dd MM YYYY'), 11.8);
+insert into invoice (created_date, totalCharge) values (to_timestamp('22 06 2022', 'dd MM YYYY'), 11.4);
+insert into invoice (created_date, totalCharge) values (to_timestamp('15 05 2022', 'dd MM YYYY'), 11.2);
+insert into invoice (created_date, totalCharge) values (to_timestamp('17 04 2022', 'dd MM YYYY'), 11.1);
+insert into invoice (created_date, totalCharge) values (to_timestamp('25 03 2022', 'dd MM YYYY'), 12.4);
+insert into invoice (created_date, totalCharge) values (to_timestamp('28 02 2022', 'dd MM YYYY'), 14.8);
+insert into invoice (created_date, totalCharge) values (to_timestamp('29 01 2022', 'dd MM YYYY'), 15.6);
+insert into invoice (created_date, totalCharge) values (to_timestamp('15 02 2022', 'dd MM YYYY'), 14);
+insert into invoice (created_date, totalCharge) values (to_timestamp('11 03 2022', 'dd MM YYYY'), 12);
+insert into invoice (created_date, totalCharge) values (to_timestamp('06 04 2022', 'dd MM YYYY'), 11);
+insert into invoice (created_date, totalCharge) values (to_timestamp('02 05 2022', 'dd MM YYYY'), 13.4);
 
 
 
