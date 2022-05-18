@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -82,5 +83,16 @@ public class DriverService {
         }
 
         return null;
+    }
+
+    public List<Driver> searchDriverByLicense(String license) {
+        List<Driver> driverList = getAllDriver();
+        List<Driver> searchList = new ArrayList<>();
+        for (Driver driver : driverList) {
+            if(driver.getLicense().toLowerCase().contains(license)) {
+                searchList.add(driver);
+            }
+        }
+        return searchList;
     }
 }

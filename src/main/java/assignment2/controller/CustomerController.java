@@ -37,4 +37,19 @@ public class CustomerController {
     public String deleteCustomer(@PathVariable Long id){
         return  customerService.deleteACustomer(id);
     }
+
+    @GetMapping("/customers/search/name/{key}")
+    public List<Customer> searchCustomerByName(@PathVariable String key) {
+        return customerService.searchCustomerByName(key);
+    }
+
+    @GetMapping("/customers/search/address/{key}")
+    public List<Customer> searchCustomerByAddress(@PathVariable String key) {
+        return customerService.searchCustomerByAddress(key);
+    }
+
+    @GetMapping("/customers/search/phone/{key}")
+    public List<Customer> searchCustomerByPhone(@PathVariable String key) {
+        return customerService.searchCustomerByPhone(key);
+    }
 }
